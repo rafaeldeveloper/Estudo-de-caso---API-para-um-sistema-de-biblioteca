@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     builder (3.2.3)
+    bullet (5.5.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     concurrent-ruby (1.0.5)
     erubis (2.7.0)
@@ -113,6 +116,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
+    uniform_notifier (1.10.0)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -121,6 +125,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   byebug
   faker
   listen (~> 3.0.5)

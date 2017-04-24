@@ -3,9 +3,17 @@ class LendingsController < ApplicationController
 
   # GET /lendings
   def index
-    @lendings = Lending.all
-
-    render json: @lendings
+    # @lendings = Lending.all
+    
+    includes = params[:includes]  
+    if includes
+      @lendings = Lending.joins(:book,:user).select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
+      # @lendings = Lending.joins("JOIN books ON books.id = lendings.book_id join users ON users.id = lendings.user_id").select('books.name as book_name,users.name as user_name,lendings.id')W
+    else
+      @lendings = Lending.all
+    end
+    render :json => @lendings
+    # render :json => @lendings.to_json(:include => [:book,:user])  
   end
 
   # GET /lendings/1
