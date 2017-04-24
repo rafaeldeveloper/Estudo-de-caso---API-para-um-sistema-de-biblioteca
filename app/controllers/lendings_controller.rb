@@ -6,8 +6,17 @@ class LendingsController < ApplicationController
     # @lendings = Lending.all
     
     includes = params[:includes]  
+    date = params[:date]  
     if includes
-      @lendings = Lending.joins(:book,:user).select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
+      if date
+        @lendings = Lending.joins(:book,:user)
+          .select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
+            .where(['lendings.created_at < ?',date])
+
+
+      else
+        @lendings = Lending.joins(:book,:user).select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
+      end
       # @lendings = Lending.joins("JOIN books ON books.id = lendings.book_id join users ON users.id = lendings.user_id").select('books.name as book_name,users.name as user_name,lendings.id')W
     else
       @lendings = Lending.all
