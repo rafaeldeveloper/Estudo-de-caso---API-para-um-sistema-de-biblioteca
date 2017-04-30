@@ -7,18 +7,21 @@ Types::QueryType = GraphQL::ObjectType.define do
 
  
 
+ 
+
   field :lending do
     type Types::LendingType
     description "Find Last Lending"
-    resolve ->(obj, args, ctx) { Lending.last
+    argument :id,types.String
+    resolve ->(obj, args, ctx) {Lending.find(args["id"])
     }
   end
 
   field :lendings, types[Types::LendingType] do
-    description "Consultar empréstimos anteriores a data requsitada"
+    description "Consultar todos os empréstimos"
     argument :date,types.String
     resolve -> (obj, args, ctx) {
-      Lending.where(['lendings.created_at < ?',args["date"]])
+      Lending.includes([:user,:book])
 
     }
   end

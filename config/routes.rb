@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/queries"
   end
 
-  post "/graphql", to: "graphql#execute"
+  get "/graphql", to: "graphql#execute"
   resources :lendings
   resources :users
   resources :books

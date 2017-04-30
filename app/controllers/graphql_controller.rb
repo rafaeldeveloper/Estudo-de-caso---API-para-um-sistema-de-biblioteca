@@ -1,7 +1,11 @@
 class GraphqlController < ApplicationController
   def execute
     variables = ensure_hash(params[:variables])
-    query = params[:query]
+    query = "{ lending(id : \"1\"){user{name},book{name},created_at} }"
+    query2 = "{ lendings{user{name},book{name},created_at} }"
+    query3 = "{ lendings{created_at} }"
+
+
     context = {
       # Query context goes here, for example:
       # current_user: current_user,

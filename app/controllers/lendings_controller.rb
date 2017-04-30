@@ -3,31 +3,14 @@ class LendingsController < ApplicationController
 
   # GET /lendings
   def index
-    # @lendings = Lending.all
-    
-    includes = params[:includes]  
-    date = params[:date]  
-    if includes
-      if date
-        @lendings = Lending.joins(:book,:user)
-          .select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
-            .where(['lendings.created_at < ?',date])
-
-
-      else
-        @lendings = Lending.joins(:book,:user).select('books.name as book_name,users.name as user_name,lendings.id, lendings.created_at as data_do_emprestimo ')
-      end
-      # @lendings = Lending.joins("JOIN books ON books.id = lendings.book_id join users ON users.id = lendings.user_id").select('books.name as book_name,users.name as user_name,lendings.id')W
-    else
-      @lendings = Lending.all
-    end
-    render :json => @lendings
-    # render :json => @lendings.to_json(:include => [:book,:user])  
+    @lendings = Lending.includes([:user,:book])
+    render :json => @lendings.to_json(:include => [:book,:user])  
   end
 
   # GET /lendings/1
   def show
-    render json: @lending
+    render :json => @lending.to_json(:include => [:user,:book]) 
+    # render json: @lending
   end
 
   # POST /lendings
