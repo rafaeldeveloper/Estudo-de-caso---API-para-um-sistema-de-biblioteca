@@ -51,6 +51,7 @@ GEM
     ffi (1.9.18)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    graphql (1.5.10)
     i18n (0.8.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -128,6 +129,7 @@ DEPENDENCIES
   bullet
   byebug
   faker
+  graphql
   listen (~> 3.0.5)
   puma (~> 3.0)
   rails (~> 5.0.1)
