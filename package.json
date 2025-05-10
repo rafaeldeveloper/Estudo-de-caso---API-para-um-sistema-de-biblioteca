@@ -1,0 +1,33 @@
+{
+  "name": "estudo-de-caso---api-para-um-sistema-de-biblioteca",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:headed": "playwright test --headed",
+    "test:signup": "playwright test user-signup.spec.js",
+    "test:login": "playwright test user-login.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaeldeveloper/Estudo-de-caso---API-para-um-sistema-de-biblioteca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaeldeveloper/Estudo-de-caso---API-para-um-sistema-de-biblioteca/issues"
+  },
+  "homepage": "https://github.com/rafaeldeveloper/Estudo-de-caso---API-para-um-sistema-de-biblioteca#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
+
